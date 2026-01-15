@@ -2,7 +2,7 @@
 // versions:
 // 	protoc-gen-go v1.36.11
 // 	protoc        v5.29.3
-// source: api/v1/log.proto
+// source: log.proto
 
 package log_v1
 
@@ -31,7 +31,7 @@ type Record struct {
 
 func (x *Record) Reset() {
 	*x = Record{}
-	mi := &file_api_v1_log_proto_msgTypes[0]
+	mi := &file_log_proto_msgTypes[0]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -43,7 +43,7 @@ func (x *Record) String() string {
 func (*Record) ProtoMessage() {}
 
 func (x *Record) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_log_proto_msgTypes[0]
+	mi := &file_log_proto_msgTypes[0]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -56,7 +56,7 @@ func (x *Record) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Record.ProtoReflect.Descriptor instead.
 func (*Record) Descriptor() ([]byte, []int) {
-	return file_api_v1_log_proto_rawDescGZIP(), []int{0}
+	return file_log_proto_rawDescGZIP(), []int{0}
 }
 
 func (x *Record) GetValue() []byte {
@@ -73,32 +73,32 @@ func (x *Record) GetOffset() uint64 {
 	return 0
 }
 
-var File_api_v1_log_proto protoreflect.FileDescriptor
+var File_log_proto protoreflect.FileDescriptor
 
-const file_api_v1_log_proto_rawDesc = "" +
+const file_log_proto_rawDesc = "" +
 	"\n" +
-	"\x10api/v1/log.proto\x12\x06log.v1\"6\n" +
+	"\tlog.proto\x12\x06log.v1\"6\n" +
 	"\x06Record\x12\x14\n" +
 	"\x05value\x18\x01 \x01(\fR\x05value\x12\x16\n" +
-	"\x06offset\x18\x02 \x01(\x04R\x06offsetB%Z#github.com/travisjeffery/api/log_v1b\x06proto3"
+	"\x06offset\x18\x02 \x01(\x04R\x06offsetB\x1dZ\x1bgithub.com/tj330/api/log_v1b\x06proto3"
 
 var (
-	file_api_v1_log_proto_rawDescOnce sync.Once
-	file_api_v1_log_proto_rawDescData []byte
+	file_log_proto_rawDescOnce sync.Once
+	file_log_proto_rawDescData []byte
 )
 
-func file_api_v1_log_proto_rawDescGZIP() []byte {
-	file_api_v1_log_proto_rawDescOnce.Do(func() {
-		file_api_v1_log_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_api_v1_log_proto_rawDesc), len(file_api_v1_log_proto_rawDesc)))
+func file_log_proto_rawDescGZIP() []byte {
+	file_log_proto_rawDescOnce.Do(func() {
+		file_log_proto_rawDescData = protoimpl.X.CompressGZIP(unsafe.Slice(unsafe.StringData(file_log_proto_rawDesc), len(file_log_proto_rawDesc)))
 	})
-	return file_api_v1_log_proto_rawDescData
+	return file_log_proto_rawDescData
 }
 
-var file_api_v1_log_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
-var file_api_v1_log_proto_goTypes = []any{
+var file_log_proto_msgTypes = make([]protoimpl.MessageInfo, 1)
+var file_log_proto_goTypes = []any{
 	(*Record)(nil), // 0: log.v1.Record
 }
-var file_api_v1_log_proto_depIdxs = []int32{
+var file_log_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for method output_type
 	0, // [0:0] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
@@ -106,26 +106,26 @@ var file_api_v1_log_proto_depIdxs = []int32{
 	0, // [0:0] is the sub-list for field type_name
 }
 
-func init() { file_api_v1_log_proto_init() }
-func file_api_v1_log_proto_init() {
-	if File_api_v1_log_proto != nil {
+func init() { file_log_proto_init() }
+func file_log_proto_init() {
+	if File_log_proto != nil {
 		return
 	}
 	type x struct{}
 	out := protoimpl.TypeBuilder{
 		File: protoimpl.DescBuilder{
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
-			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_log_proto_rawDesc), len(file_api_v1_log_proto_rawDesc)),
+			RawDescriptor: unsafe.Slice(unsafe.StringData(file_log_proto_rawDesc), len(file_log_proto_rawDesc)),
 			NumEnums:      0,
 			NumMessages:   1,
 			NumExtensions: 0,
 			NumServices:   0,
 		},
-		GoTypes:           file_api_v1_log_proto_goTypes,
-		DependencyIndexes: file_api_v1_log_proto_depIdxs,
-		MessageInfos:      file_api_v1_log_proto_msgTypes,
+		GoTypes:           file_log_proto_goTypes,
+		DependencyIndexes: file_log_proto_depIdxs,
+		MessageInfos:      file_log_proto_msgTypes,
 	}.Build()
-	File_api_v1_log_proto = out.File
-	file_api_v1_log_proto_goTypes = nil
-	file_api_v1_log_proto_depIdxs = nil
+	File_log_proto = out.File
+	file_log_proto_goTypes = nil
+	file_log_proto_depIdxs = nil
 }

@@ -8,14 +8,14 @@ import (
 	"testing"
 	"time"
 
+	"github.com/stretchr/testify/require"
 	api "github.com/tj330/proglog/api/v1"
+	"github.com/tj330/proglog/config"
 	"github.com/tj330/proglog/internal/agent"
+	"github.com/tj330/proglog/internal/loadbalance"
 	"github.com/travisjeffery/go-dynaport"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials"
-
-	"github.com/stretchr/testify/require"
-	"github.com/tj330/proglog/config"
 )
 
 func TestAgent(t *testing.T) {
@@ -65,6 +65,7 @@ func TestAgent(t *testing.T) {
 			ACLPolicyFile:   config.ACLPolicyFile,
 			ServerTLSConfig: serverTLSConfig,
 			PeerTLSConfig:   peerTLSConfig,
+			Bootstrap:       i == 0,
 		})
 		require.NoError(t, err)
 		agents = append(agents, agent)
@@ -92,6 +93,8 @@ func TestAgent(t *testing.T) {
 	)
 
 	require.NoError(t, err)
+
+	time.Sleep(3 * time.Second)
 	consumeResponse, err := leaderClient.Consume(
 		context.Background(),
 		&api.ConsumeRequest{
@@ -121,7 +124,8 @@ func client(t *testing.T, agent *agent.Agent, tlsConfig *tls.Config) api.LogClie
 	opts := []grpc.DialOption{grpc.WithTransportCredentials(tlsCreds)}
 	rpcAddr, err := agent.Config.RPCAddr()
 	require.NoError(t, err)
-	conn, err := grpc.NewClient(fmt.Sprintf("%s", rpcAddr), opts...)
+
+	conn, err := grpc.NewClient(fmt.Sprintf("%s:///%s", loadbalance.Name, rpcAddr), opts...)
 	require.NoError(t, err)
 	client := api.NewLogClient(conn)
 

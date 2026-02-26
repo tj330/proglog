@@ -106,6 +106,7 @@ func (r *Replicator) Leave(name string) error {
 
 func (r *Replicator) init() {
 	if r.logger == nil {
+		// logger with name `replicator`
 		r.logger = zap.L().Named("replicator")
 	}
 	if r.servers == nil {
@@ -129,6 +130,7 @@ func (r *Replicator) Close() error {
 func (r *Replicator) logError(err error, msg, addr string) {
 	r.logger.Error(
 		msg,
+		// key value pairs to log
 		zap.String("addr", addr),
 		zap.Error(err),
 	)
